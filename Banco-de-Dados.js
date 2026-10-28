@@ -5,7 +5,7 @@ const NIVEIS_URGENCIA = {
     critica: { nome: "Crítica", cor: "#ef4444" }  // vermelho
 };
 
-const residentesIniciais = [
+const residentesIniciai s = [
     {
         nome: "Sr. João Silva",
         idade: 78,
