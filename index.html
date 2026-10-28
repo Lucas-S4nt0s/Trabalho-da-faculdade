@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remedinhos 123 - Separador de remédios digital</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="Site.css" />
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans">
+
+    <!-- CABEÇALHO -->
+    <header class="bg-indigo-600 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-4 py-3 flex justify-between items-center">
+            <a href="#inicio" class="flex items-center space-x-2">
+                <i class="fa-solid fa-hand-holding-heart text-2xl"></i>
+                <span class="text-xl font-bold">Remedinhos <span class="text-indigo-200 text-sm font-normal">123 (IOT)</span></span>
+            </a>
+            <div class="hidden md:flex items-center space-x-6 text-sm">
+                <a href="#sobre" class="hover:text-indigo-200 transition">Sobre</a>
+                <a href="#produtos" class="hover:text-indigo-200 transition">Produtos e serviços</a>
+            </div>
+            <a href="login.html" class="bg-indigo-700 hover:bg-indigo-500 px-3 py-1.5 rounded-full text-sm transition">
+                <i class="fa-solid fa-user-nurse mr-1"></i> Área do cuidador
+            </a>
+        </div>
+    </header>
+
+    <!-- INÍCIO + IMAGEM DA EMPRESA -->
+    <section id="inicio" class="bg-indigo-50">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-2 gap-8 items-center">
+            <div>
+                <h1 class="text-3xl md:text-4xl font-bold text-slate-800">Separador de remédios digital para quem cuida de quem importa</h1>
+                <p class="mt-4 text-slate-600">Organize os horários dos medicamentos, receba lembretes e acompanhe alertas dos quartos em um só painel.</p>
+                <div class="mt-6 flex flex-wrap gap-3">
+                    <a href="#produtos" class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold px-5 py-2.5 rounded-lg transition">Conheça a solução</a>
+                    <a href="login.html" class="bg-white border border-slate-200 text-slate-700 font-semibold px-5 py-2.5 rounded-lg hover:bg-slate-50 transition">Acessar o painel</a>
+                </div>
+            </div>
+            <div class="flex justify-center">
+                <!-- IMAGEM DA EMPRESA (placeholder).
+                     Quando tiverem a imagem, troque este <div> por:
+                     <img src="img/empresa.jpg" alt="Imagem da empresa" class="rounded-3xl shadow-md w-full max-w-sm"> -->
+                <div class="w-full max-w-sm aspect-square rounded-3xl bg-indigo-600 text-white flex items-center justify-center shadow-md">
+                    <i class="fa-solid fa-pills text-8xl"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SOBRE / HISTÓRICO -->
+    <section id="sobre" class="scroll-mt-16">
+        <div class="max-w-4xl mx-auto px-4 py-12 space-y-4">
+            <h2 class="text-2xl font-bold text-slate-700"><i class="fa-solid fa-book-open text-indigo-600 mr-2"></i> Nossa história</h2>
+            <!-- RASCUNHO: o grupo deve reescrever com a história real -->
+            <p class="text-slate-600">O projeto nasceu da dificuldade de organizar os horários de vários medicamentos em lugares que cuidam de idosos, onde um esquecimento ou uma troca de dose pode causar problemas sérios.</p>
+            <p class="text-slate-600">Desenvolvido por estudantes de Análise e Desenvolvimento de Sistemas da UNINOVE, o Remedinhos 123 une um painel simples para o cuidador a sensores IoT que avisam quando algo foge do normal no quarto.</p>
+        </div>
+    </section>
+
+    <!-- PRODUTOS E SERVIÇOS -->
+    <section id="produtos" class="bg-white border-y border-slate-200 scroll-mt-16">
+        <div class="max-w-6xl mx-auto px-4 py-12 space-y-6">
+            <h2 class="text-2xl font-bold text-slate-700"><i class="fa-solid fa-box-open text-indigo-600 mr-2"></i> Produtos e serviços</h2>
+            <div class="grid md:grid-cols-3 gap-5">
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <!-- IMAGEM (placeholder): troque o <div> por <img src="img/separador.jpg" alt="..." class="w-full h-40 object-cover"> -->
+                    <div class="h-40 bg-indigo-600 text-white flex items-center justify-center"><i class="fa-solid fa-pills text-5xl"></i></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-slate-800">Separador de remédios digital</h3>
+                        <p class="text-sm text-slate-600 mt-1">Agenda com os horários de cada residente e lembrete na hora de administrar cada medicamento.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <div class="h-40 bg-indigo-600 text-white flex items-center justify-center"><i class="fa-solid fa-triangle-exclamation text-5xl"></i></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-slate-800">Alertas IoT</h3>
+                        <p class="text-sm text-slate-600 mt-1">Sensores nos quartos avisam sobre possível queda, porta aberta fora de hora e temperatura fora do normal.</p>
+                    </div>
+                </div>
+
+                <div class="bg-slate-50 rounded-2xl border border-slate-200 overflow-hidden">
+                    <div class="h-40 bg-indigo-600 text-white flex items-center justify-center"><i class="fa-solid fa-users text-5xl"></i></div>
+                    <div class="p-4">
+                        <h3 class="font-bold text-slate-800">Painel do cuidador</h3>
+                        <p class="text-sm text-slate-600 mt-1">Cadastro de residentes, histórico do que foi administrado e dos alertas resolvidos, tudo num só lugar.</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <footer class="text-center text-xs text-slate-500 py-6">
+        Remedinhos 123 (IOT) • Projeto acadêmico ADS - UNINOVE
+    </footer>
+
+</body>
+</html>
