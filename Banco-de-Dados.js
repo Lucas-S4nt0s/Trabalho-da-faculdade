@@ -5,7 +5,7 @@ const NIVEIS_URGENCIA = {
     critica: { nome: "Crítica", cor: "#ef4444" }  // vermelho
 };
 
-const residentesInicias = [
+const residentesIniciias = [
     {
         nome: "Sr. João Silva",
         idade: 78,
@@ -48,8 +48,6 @@ const residentesInicias = [
 
 const CHAVE_RESIDENTES = "remedinhos_residentes";
 
-// Só um detalhe: a urgência é salva como texto ("media") e não como objeto,
-// porque o localStorage só guarda texto simples.
 function carregarResidentes() {
     const salvo = localStorage.getItem(CHAVE_RESIDENTES);
     if (!salvo) return residentesIniciais;
