@@ -86,6 +86,19 @@ function idsSalvos(chave) {
 function horaAgora() {
     return new Date().toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
 }
+// Data de hoje no formato "2026-10-29" (usa o relógio local; toISOString() NÃO serve porque devolve em UTC)
+function dataHoje() {
+    const d = new Date();
+    const mes = String(d.getMonth() + 1).padStart(2, "0");
+    const dia = String(d.getDate()).padStart(2, "0");
+    return `${d.getFullYear()}-${mes}-${dia}`;
+}
+
+// Transforma "2026-10-29" em "29/10" para mostrar na tela
+function formatarData(data) {
+    const [, mes, dia] = data.split("-");
+    return `${dia}/${mes}`;
+}
 
 // Monta a lista de todos os remédios com um id único (residente-remédio)
 function listarTodosRemedios() {
@@ -116,7 +129,8 @@ function renderizarAgenda() {
     const listaCards = document.getElementById("lista-agenda-dinamica");
     if (!listaCards) return;
 
-    const concluidos = idsSalvos(CHAVE_REMEDIOS);
+    const hoje = dataHoje();
+    const concluidos = lerSalvo(CHAVE_REMEDIOS).filter(x => x.data === hoje).map(x => x.id);
     const pendentes = listarTodosRemedios().filter(i => !concluidos.includes(i.id));
 
     if (pendentes.length === 0) {
@@ -151,13 +165,18 @@ function renderizarAgenda() {
 
 function concluirTarefa(id) {
     const lista = lerSalvo(CHAVE_REMEDIOS);
-    if (!lista.some(x => x.id === id)) lista.push({ id, em: horaAgora() });
+    const hoje = dataHoje();
+    // só bloqueia se já foi feito HOJE (o de outros dias fica no histórico)
+    if (!lista.some(x => x.id === id && x.data === hoje)) {
+        lista.push({ id, data: hoje, em: horaAgora() });
+    }
     salvar(CHAVE_REMEDIOS, lista);
     atualizarTudo();
 }
 
 function desfazerTarefa(id) {
-    salvar(CHAVE_REMEDIOS, lerSalvo(CHAVE_REMEDIOS).filter(x => x.id !== id));
+    const hoje = dataHoje();
+    salvar(CHAVE_REMEDIOS, lerSalvo(CHAVE_REMEDIOS).filter(x => !(x.id === id && x.data === hoje)));
     atualizarTudo();
 }
 
@@ -238,18 +257,19 @@ function renderizarHistorico() {
 
     const salvosAl = lerSalvo(CHAVE_ALERTAS);
     const alertasFeitos = salvosAl
-        .map(s => ({ ...alertas.find(a => a.id === s.id), em: s.em }))
+        .map(s => ({ ...todos.find(t => t.id === s.id), em: s.em, data: s.data }))
         .filter(x => x.id);
 
     const htmlRem = remediosFeitos.map(i => `
         <div class="bg-white p-3 rounded-xl border border-slate-200 flex justify-between items-center gap-3">
             <div>
                 <p class="font-semibold text-slate-800 text-sm">${i.nomeResidente} <span class="text-xs font-normal text-slate-500">(Quarto ${i.quarto})</span></p>
-                <p class="text-xs text-slate-500">${i.nomeRemedio} • previsto ${i.horario} • feito às ${i.em}</p>
+                <p class="text-xs text-slate-500">${i.nomeRemedio} • previsto ${i.horario} • feito ${i.data ? formatarData(i.data) : "(data não registrada)"} às ${i.em}</p>
             </div>
+                ${i.data === dataHoje() ? `
             <button type="button" onclick="desfazerTarefa('${i.id}')" class="text-sm text-slate-500 hover:text-indigo-600 cursor-pointer">
                 <i class="fa-solid fa-rotate-left mr-1"></i> Desfazer
-            </button>
+            </button>` : ""}
         </div>
     `).join("") || '<p class="text-sm text-slate-500">Nenhum remédio concluído ainda.</p>';
 
