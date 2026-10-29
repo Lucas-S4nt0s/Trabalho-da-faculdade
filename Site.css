@@ -38,7 +38,7 @@ header {
 header h1 {
   letter-spacing: -0.2px;
 }
-/* icone com nome errado no HTML (fa-hand-golding-heart)--- foi ajustado no CSS onde se encontrava o erro*/
+
 header .fa-hand-holding-heart::before {
   content: "\f4be";
 }
@@ -102,15 +102,6 @@ main h2 {
 #lista-agenda-dinamica button:active {
   transform: scale(0.98);
 }
-/* botao */
-#lista-agenda-dinamica button:disabled {
-  background: #eef1f0;
-  color: #6b7d79;
-  border-color: var(--color-slate-200);
-  cursor: not-allowed;
-  transform: none;
-}
-
 /* 6) RESIDENTES */
 #lista-residentes-cards {
   display: grid;
