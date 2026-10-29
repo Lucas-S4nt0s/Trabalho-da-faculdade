@@ -252,12 +252,12 @@ function renderizarHistorico() {
     const salvosRem = lerSalvo(CHAVE_REMEDIOS);
     const todos = listarTodosRemedios();
     const remediosFeitos = salvosRem
-        .map(s => ({ ...todos.find(t => t.id === s.id), em: s.em }))
+        .map(s => ({ ...todos.find(t => t.id === s.id), em: s.em, data: s.data }))
         .filter(x => x.id);
-
+    
     const salvosAl = lerSalvo(CHAVE_ALERTAS);
     const alertasFeitos = salvosAl
-        .map(s => ({ ...todos.find(t => t.id === s.id), em: s.em, data: s.data }))
+        .map(s => ({ ...alertas.find(a => a.id === s.id), em: s.em }))
         .filter(x => x.id);
 
     const htmlRem = remediosFeitos.map(i => `
