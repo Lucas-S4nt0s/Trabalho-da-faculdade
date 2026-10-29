@@ -69,7 +69,7 @@ const alertas = [
 ];
 
 // ---------- ESTADO SALVO NO NAVEGADOR ----------
-// Cada item salvo é { id, em } -> "em" é a hora em que foi concluído/resolvido
+// Cada item salvo é { id, data, em } -> "em" é a hora em que foi concluído/resolvido
 const CHAVE_REMEDIOS = "remedinhos_hist_remedios";
 const CHAVE_ALERTAS = "remedinhos_hist_alertas";
 
